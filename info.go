@@ -48,6 +48,8 @@ func getInfoUpdates(data *InfoData) []CarteleraInfoMensaje {
 			for _, mensaje := range result.Mensajes {
 				if mensaje.Fecha != data.UltimoMensaje.Fecha {
 					updates = append(updates, mensaje)
+				} else {
+					break
 				}
 			}
 			data.UltimoMensaje = result.Mensajes[0]
