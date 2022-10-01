@@ -45,6 +45,7 @@ func getIngUpdates(data *IngData) string {
 		if data.Paginas.Cronograma != raw {
 			body = append(body, fmt.Sprintf("el [cronograma](<https://www.ing.unlp.edu.ar/catedras/%s/index.php?secc=cronograma>)", data.ID))
 		}
+		data.Paginas.Cronograma = raw
 	}
 
 	// Horarios
@@ -56,6 +57,7 @@ func getIngUpdates(data *IngData) string {
 		if data.Paginas.Horarios != raw {
 			body = append(body, fmt.Sprintf("los [horarios](<https://www.ing.unlp.edu.ar/catedras/%s/index.php?secc=horarios>)", data.ID))
 		}
+		data.Paginas.Horarios = raw
 	}
 
 	// Notas
