@@ -9,10 +9,9 @@ import (
 )
 
 type IngData struct {
-	ID           string
-	Nombre       string
-	Inicializado bool
-	Paginas      IngDataPaginas
+	ID      string
+	Nombre  string
+	Paginas IngDataPaginas
 }
 
 type IngDataPaginas struct {
@@ -119,14 +118,10 @@ func getIngUpdates(data *IngData) string {
 		data.Paginas.Bibliografia = raw
 	}
 
-	if data.Inicializado {
-		if len(body) >= 2 {
-			return "Se actualizó " + strings.Join(body[:len(body)-1], ", ") + " y " + body[len(body)-1]
-		} else if len(body) == 1 {
-			return "Se actualizó " + body[0]
-		}
-	} else {
-		data.Inicializado = true
+	if len(body) >= 2 {
+		return "Se actualizó " + strings.Join(body[:len(body)-1], ", ") + " y " + body[len(body)-1]
+	} else if len(body) == 1 {
+		return "Se actualizó " + body[0]
 	}
 
 	return ""

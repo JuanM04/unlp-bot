@@ -9,12 +9,11 @@ import (
 )
 
 type GraficaData struct {
-	Inicio       string
-	Apuntes      string
-	Guias        string
-	Animaciones  string
-	Parcial      string
-	Inicializado bool
+	Inicio      string
+	Apuntes     string
+	Guias       string
+	Animaciones string
+	Parcial     string
 }
 
 func getGraficaUpdates(data *GraficaData) string {
@@ -132,14 +131,10 @@ func getGraficaUpdates(data *GraficaData) string {
 		}
 	}
 
-	if data.Inicializado {
-		if len(body) >= 2 {
-			return "Se actualizó " + strings.Join(body[:len(body)-1], ", ") + " y " + body[len(body)-1]
-		} else if len(body) == 1 {
-			return "Se actualizó " + body[0]
-		}
-	} else {
-		data.Inicializado = true
+	if len(body) >= 2 {
+		return "Se actualizó " + strings.Join(body[:len(body)-1], ", ") + " y " + body[len(body)-1]
+	} else if len(body) == 1 {
+		return "Se actualizó " + body[0]
 	}
 
 	return ""

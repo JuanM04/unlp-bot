@@ -10,7 +10,6 @@ import (
 type InfoData struct {
 	ID            int
 	Nombre        string
-	Inicializado  bool
 	UltimoMensaje CarteleraInfoMensaje
 }
 
@@ -45,20 +44,14 @@ func getInfoUpdates(data *InfoData) []CarteleraInfoMensaje {
 		result := resp.Result().(*CarteleraInfoResponse)
 
 		if len(result.Mensajes) > 0 {
-			if data.Inicializado {
-				updates := make([]CarteleraInfoMensaje, 0)
-				for _, mensaje := range result.Mensajes {
-					if mensaje.Fecha != data.UltimoMensaje.Fecha {
-						updates = append(updates, mensaje)
-					}
+			updates := make([]CarteleraInfoMensaje, 0)
+			for _, mensaje := range result.Mensajes {
+				if mensaje.Fecha != data.UltimoMensaje.Fecha {
+					updates = append(updates, mensaje)
 				}
-				data.UltimoMensaje = result.Mensajes[0]
-				return updates
-			} else {
-				data.Inicializado = true
-				data.UltimoMensaje = result.Mensajes[0]
 			}
-
+			data.UltimoMensaje = result.Mensajes[0]
+			return updates
 		}
 	}
 

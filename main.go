@@ -32,6 +32,16 @@ func main() {
 		{ID: 108, Nombre: "Programación II (Redictado)"},
 	}
 
+	log.Println("Initializing data...")
+
+	for i := range catedrasDeIngenieria {
+		getIngUpdates(&catedrasDeIngenieria[i])
+	}
+	getGraficaUpdates(&catedraDeGrafica)
+	for i := range catedrasDeInformatica {
+		getInfoUpdates(&catedrasDeInformatica[i])
+	}
+
 	scheduler := gocron.NewScheduler(getART())
 
 	scheduler.Cron("*/30 * * * *").Do(func() {
