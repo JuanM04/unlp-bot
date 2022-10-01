@@ -44,6 +44,15 @@ func main() {
 			embeds := make([]WebhookEmbed, 0)
 			for _, update := range updates {
 				cuerpo, _ := mdConverter.ConvertString(update.Cuerpo)
+				adjuntos := make([]WebhookEmbedField, 0)
+
+				for _, adjunto := range update.Adjuntos {
+					adjuntos = append(adjuntos, WebhookEmbedField{
+						Name:  adjunto.Nombre,
+						Value: adjunto.PublicPath,
+					})
+				}
+
 				embeds = append(embeds, WebhookEmbed{
 					Title:       update.Titulo,
 					Type:        "rich",
@@ -52,6 +61,7 @@ func main() {
 					Author: WebhookEmbedAuthor{
 						Name: strings.Trim(update.Autor, " "),
 					},
+					Fields: adjuntos,
 				})
 			}
 			invokeWebhook(WebhookPayload{

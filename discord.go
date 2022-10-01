@@ -13,16 +13,22 @@ type WebhookPayload struct {
 }
 
 type WebhookEmbed struct {
-	Title       string             `json:"title"`
-	Type        string             `json:"type"`
-	Description string             `json:"description"`
-	Color       int                `json:"color,omitempty"`
-	Author      WebhookEmbedAuthor `json:"author,omitempty"`
-	URL         string             `json:"url,omitempty"`
+	Title       string              `json:"title"`
+	Type        string              `json:"type"`
+	Description string              `json:"description"`
+	Color       int                 `json:"color,omitempty"`
+	Author      WebhookEmbedAuthor  `json:"author,omitempty"`
+	Fields      []WebhookEmbedField `json:"fields,omitempty"`
+	URL         string              `json:"url,omitempty"`
 }
 
 type WebhookEmbedAuthor struct {
 	Name string `json:"name"`
+}
+
+type WebhookEmbedField struct {
+	Name  string `json:"name"`
+	Value string `json:"value"`
 }
 
 func invokeWebhook(payload WebhookPayload) {
