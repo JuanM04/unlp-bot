@@ -23,6 +23,7 @@ func main() {
 		{ID: 106, Nombre: "Programación II"},
 		{ID: 108, Nombre: "Programación II (Redictado)"},
 	}
+	catedraDeGrafica := GraficaData{}
 
 	ingUpdates := make([]string, 0)
 	for i := range catedrasDeIngenieria {
@@ -31,6 +32,12 @@ func main() {
 			ingUpdates = append(ingUpdates, fmt.Sprintf("**%s** - %s", catedrasDeIngenieria[i].Nombre, message))
 		}
 	}
+
+	graficaUpdate := getGraficaUpdates(&catedraDeGrafica)
+	if graficaUpdate != "" {
+		ingUpdates = append(ingUpdates, fmt.Sprintf("**Gráfica para Ingeniería** - %s", graficaUpdate))
+	}
+
 	if len(ingUpdates) > 0 {
 		invokeWebhook(WebhookPayload{
 			Content: strings.Join(ingUpdates, "\n"),
