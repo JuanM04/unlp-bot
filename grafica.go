@@ -31,7 +31,7 @@ func getGraficaUpdates(data *GraficaData) string {
 	if err != nil {
 		log.Println(err)
 	} else {
-		doc, err := goquery.NewDocumentFromReader(res.RawResponse.Body)
+		doc, err := goquery.NewDocumentFromReader(strings.NewReader(res.String()))
 		if err != nil {
 			log.Println(err)
 		} else {
@@ -53,7 +53,7 @@ func getGraficaUpdates(data *GraficaData) string {
 	if err != nil {
 		log.Println(err)
 	} else {
-		doc, err := goquery.NewDocumentFromReader(res.RawResponse.Body)
+		doc, err := goquery.NewDocumentFromReader(strings.NewReader(res.String()))
 		if err != nil {
 			log.Println(err)
 		} else {
@@ -74,7 +74,7 @@ func getGraficaUpdates(data *GraficaData) string {
 	if err != nil {
 		log.Println(err)
 	} else {
-		doc, err := goquery.NewDocumentFromReader(res.RawResponse.Body)
+		doc, err := goquery.NewDocumentFromReader(strings.NewReader(res.String()))
 		if err != nil {
 			log.Println(err)
 		} else {
@@ -95,7 +95,7 @@ func getGraficaUpdates(data *GraficaData) string {
 	if err != nil {
 		log.Println(err)
 	} else {
-		doc, err := goquery.NewDocumentFromReader(res.RawResponse.Body)
+		doc, err := goquery.NewDocumentFromReader(strings.NewReader(res.String()))
 		if err != nil {
 			log.Println(err)
 		} else {
@@ -116,7 +116,7 @@ func getGraficaUpdates(data *GraficaData) string {
 	if err != nil {
 		log.Println(err)
 	} else {
-		doc, err := goquery.NewDocumentFromReader(res.RawResponse.Body)
+		doc, err := goquery.NewDocumentFromReader(strings.NewReader(res.String()))
 		if err != nil {
 			log.Println(err)
 		} else {
