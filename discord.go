@@ -16,7 +16,7 @@ type WebhookEmbed struct {
 	Title       string              `json:"title"`
 	Type        string              `json:"type"`
 	Description string              `json:"description"`
-	Color       int                 `json:"color,omitempty"`
+	Color       int                 `json:"color,omitempty"` // https://gist.github.com/thomasbnt/b6f455e2c7d743b796917fa3c205f812?permalink_comment_id=3656937#gistcomment-3656937
 	Author      WebhookEmbedAuthor  `json:"author,omitempty"`
 	Fields      []WebhookEmbedField `json:"fields,omitempty"`
 	URL         string              `json:"url,omitempty"`
