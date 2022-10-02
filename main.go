@@ -44,7 +44,7 @@ func main() {
 
 	scheduler := gocron.NewScheduler(getART())
 
-	scheduler.Cron("*/30 * * * *").Do(func() {
+	scheduler.Cron("*/15 * * * *").Do(func() {
 		log.Println("Checking for updates...")
 		ingUpdates := make([]string, 0)
 		for i := range catedrasDeIngenieria {
