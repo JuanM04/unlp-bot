@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"log"
 	"os"
 
@@ -42,5 +43,17 @@ func invokeWebhook(payload WebhookPayload) {
 		log.Fatalln(err)
 	} else if resp.IsError() {
 		log.Fatalln(resp)
+	}
+
+	if err != nil || resp.IsError() {
+		b, err := json.MarshalIndent(payload, "", "  ")
+		if err != nil {
+			log.Printf("Payload: %+v\n", payload)
+		} else {
+			log.Printf("Payload: %s\n", string(b))
+		}
+		log.Println(payload)
+	} else {
+		log.Println("Webhook invoked successfully")
 	}
 }
